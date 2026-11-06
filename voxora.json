@@ -1,0 +1,30 @@
+{
+  "$schema": "./schema.json",
+  "app_id": "com.voxora.remote",
+  "app_name": "Voxora Universal Smart Remote",
+  "schema_version": "1.0.0",
+  "updated_at": "2026-11-06T08:45:00Z",
+  "early_access": {
+    "active": true,
+    "banner": {
+      "en": "Early Access Trial: Free during our launch phase!",
+      "ar": "نسخة الوصول المبكر: مجاناً بالكامل خلال فترة الإطلاق!"
+    }
+  },
+  "trial": {
+    "duration_days": 14,
+    "grace_period_days": 14
+  },
+  "pricing": {
+    "lifetime_product_id": "dev.voxora.lifetime",
+    "price_usd": 1.99
+  },
+  "maintenance": {
+    "active": false,
+    "min_supported_version": "1.0.0",
+    "message": {
+      "en": "We are upgrading our systems. Please check back shortly.",
+      "ar": "نقوم حالياً بترقية الأنظمة. يُرجى التحقق مرة أخرى قريباً."
+    }
+  }
+}

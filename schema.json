@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MobileAppRemoteConfig",
+  "type": "object",
+  "required": [
+    "app_id",
+    "app_name",
+    "schema_version",
+    "updated_at",
+    "early_access",
+    "trial",
+    "pricing"
+  ],
+  "properties": {
+    "app_id": {
+      "type": "string",
+      "description": "Unique application package identifier / bundle ID"
+    },
+    "app_name": {
+      "type": "string",
+      "description": "Human-readable name of the mobile application"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Semantic version of the configuration schema"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last configuration update"
+    },
+    "early_access": {
+      "type": "object",
+      "required": ["active"],
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "When true, app operates in open unlimited launch trial mode"
+        },
+        "banner": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "string" },
+            "ar": { "type": "string" }
+          }
+        }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "required": ["duration_days"],
+      "properties": {
+        "duration_days": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 14,
+          "description": "Standard free trial duration in days for new installs"
+        },
+        "grace_period_days": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 14,
+          "description": "Grace period in days granted to existing users when early_access.active flips to false"
+        }
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "required": ["lifetime_product_id", "price_usd"],
+      "properties": {
+        "lifetime_product_id": {
+          "type": "string",
+          "description": "StoreKit / Google Play Billing non-consumable product ID"
+        },
+        "price_usd": {
+          "type": "number",
+          "minimum": 0.0,
+          "description": "Reference base price in USD"
+        }
+      }
+    },
+    "maintenance": {
+      "type": "object",
+      "properties": {
+        "active": { "type": "boolean" },
+        "min_supported_version": { "type": "string" },
+        "message": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "string" },
+            "ar": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
